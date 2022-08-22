@@ -1,0 +1,12 @@
+<!-- CHAMP DE SAISIE RECHERCHE FILMS-->
+<!-- (keyup)="searchMoviesAction(userInput.value)" -->
+<input #userInput (keyup)="searchMoviesAction(userInput.value)" 
+      placeholder="Rechercher des films..." class="form-control" type="text">
+      
+<!-- AFFICHER LA LISTE DES RESULTATS DE RECHERCHE-->
+<ul>
+      <li [routerLink]="['/details', movie.id]" 
+          *ngFor="let movie of foundMovies">
+            {{movie.titre}}
+      </li>
+</ul>

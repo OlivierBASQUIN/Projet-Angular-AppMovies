@@ -1,0 +1,26 @@
+<h1>Les films à l'affiche</h1>
+<!-- <app-searchbar> -->
+<app-searchbar></app-searchbar>
+
+<div class="row pb-5">
+
+    <div *ngFor="let movie of movieSvc.movies$ | async" class="col-12 col-lg-2">
+        <!-- CARD-->
+        <div (click)="navToDetail(movie)" [routerLink]="['details', movie.id]" class="card">
+            <img [src]="getUrlImage(movie.image)" alt="">
+            
+            <div class="card-body">
+                <h2>{{movie.titre}}</h2>  
+
+                <app-stars [score]="movie.score" total="10"></app-stars>
+            </div>
+        </div>
+        <!-- FIN CARD-->
+    </div>
+
+</div>
+
+<!-- BAR BUTTON "Films suivants" -->
+<div class="next-movies">
+    <button (click)="getNextMoviesOnAction()" class="btn btn-light">Films suivants</button>
+</div>

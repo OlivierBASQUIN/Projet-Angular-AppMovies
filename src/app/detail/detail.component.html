@@ -1,0 +1,34 @@
+<!-- <pre>{{ movieVideo | json }}</pre> -->
+<div class="row">
+
+    <!-- Informations film-->
+    <div class="col-12 col-md-6">
+        <div *ngIf="movieSvc.movie$ | async as movie ">
+
+            <div class="d-flex">
+                <button routerLink="/" class="btn btn-dark me-3">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <h1>{{movie.titre}}</h1>
+            </div>
+            
+        
+            <p>Résumé: {{movie.description}}</p>
+            <p>Date de sortie: {{movie.date | date:'dd/MM/YYYY' }}</p>
+            <p>Score : <app-stars [score]="movie.score" total="10"></app-stars></p>
+        </div>
+    </div>
+    
+    <!-- video B.A-->
+    <div class="col-12 col-md-6">
+        <div class="video-container">
+            <iframe *ngIf="movieVideo" [width]="21/9*movieVideo.size" [height]="movieVideo.size" 
+                    [src]="getVideoUrl(movieVideo.key)" 
+                    frameborder="0"
+                    allowfullscreen></iframe>
+                    
+            <p *ngIf="!movieVideo">Pzs de bande annonce disponible</p>
+    
+        </div>    
+    </div>
+</div>
